@@ -1,7 +1,7 @@
 from playwright.sync_api import expect
 
 
-class HomePage:
+class CarreerPage:
 
     def __init__(self, page):
         self.page = page
@@ -12,6 +12,7 @@ class HomePage:
         heading_name = 'CAG Contactor - Konsulter som trivs är vår främsta framgångsfaktor'
         self.heading_locator = page.get_by_role("heading", name=heading_name)
         self.medarbetare_link_locator = page.get_by_role("link", name="Medarbetare", exact=True)
+        self.connect_link_locator = page.get_by_role("link", name="Connect", exact=True)
 
     def close_cookies_popup(self):
         self.accept_cookies_button_locator.click()
@@ -21,3 +22,6 @@ class HomePage:
 
     def click_medarbetare(self):
         self.medarbetare_link_locator.click()
+
+    def click_connect(self):
+        self.connect_link_locator.click()

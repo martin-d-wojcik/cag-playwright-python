@@ -1,6 +1,6 @@
 import pytest
 from playwright.sync_api import sync_playwright
-from pages import homepage
+from pages import carreerpage
 
 
 @pytest.fixture(name='chrome_page', scope='module', autouse=True)
@@ -19,7 +19,7 @@ def page(browser):
 
 @pytest.fixture
 def home_page(browser):
-    print('home_page fixture')
+    print('carreer_page fixture')
     page = browser.new_context().new_page()
-    home_page = homepage.HomePage(page)
-    yield home_page
+    carreer_page = carreerpage.CarreerPage(browser)
+    yield carreer_page
