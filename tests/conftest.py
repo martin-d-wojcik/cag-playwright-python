@@ -6,14 +6,14 @@ from pages import carreerpage
 @pytest.fixture(name='chrome_page', scope='module', autouse=True)
 def set_up_chrome():
     with sync_playwright() as playwright:
-        browser = playwright.chromium.launch(headless=False)
+        # Set headless to True when running tests in container
+        browser = playwright.chromium.launch(headless=True)
         global page
         page = browser.new_page()
         yield page
 
 @pytest.fixture()
 def page(browser):
-    print('page fixture')
     page = browser.new_context().new_page()
     yield page
 
